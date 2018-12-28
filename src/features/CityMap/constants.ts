@@ -1,0 +1,5 @@
+export const ADD_CITY_REQUEST = 'ADD_CITY/REQUEST'
+export const ADD_CITY_SUCCESS = 'ADD_CITY/SUCCESS'
+export const ADD_CITY_FAILURE = 'ADD_CITY/FAILURE'
+export const DELETE_CITY      = 'DELETE_CITY'
+export const SORT_BY_CITY     = 'SORT_BY_CITY'
