@@ -1,14 +1,8 @@
 import * as React from 'react'
-import { connect } from 'react-redux'
-import { bindActionCreators, Dispatch } from 'redux'
-import Types from 'Types'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import CircularProgress from '@material-ui/core/CircularProgress'
-import { withStyles } from '@material-ui/core/styles'
 
-import * as actions from '../../actions'
-import styles from './styles'
 import { ICityMap } from '../../models'
 
 export interface IProps {
@@ -77,20 +71,4 @@ class AddCity extends React.Component<IProps, IState> {
   }
 }
 
-const mapStateToProps = (state: Types.RootState) => {
-  const { fetching, error, cityMaps } = state.cityMap
-  return {
-    fetching,
-    error,
-    cityMaps: cityMaps.payload
-  } as IProps
-}
-
-const mapDispatchToProps = (dispatch: Dispatch<Types.RootAction>) => bindActionCreators({
-  addCity: actions.addCity.request
-}, dispatch)
-
-const ReduxWrapper = connect(mapStateToProps, mapDispatchToProps)
-const StylesWrapper = withStyles(styles)
-const WrappedComponent = ReduxWrapper(StylesWrapper(AddCity))
-export default WrappedComponent
+export default AddCity

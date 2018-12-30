@@ -1,8 +1,5 @@
 import * as React from 'react'
-import { connect } from 'react-redux'
-import { bindActionCreators, Dispatch } from 'redux'
-import Types from 'Types'
-import { withStyles } from '@material-ui/core/styles'
+
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
 import TableHead from '@material-ui/core/TableHead'
@@ -11,10 +8,7 @@ import IconButton from '@material-ui/core/IconButton'
 import DeleteIcon from '@material-ui/icons/Delete'
 
 import { ICityMap } from '../../models'
-
-import styles from './styles'
 import CustomTableCell from './CustomTableCell'
-import * as actions from '../../actions'
 
 export interface IProps {
    cityMaps: ICityMap[]
@@ -55,16 +49,4 @@ const CitiesTable = ({ cityMaps, classes, deleteCity, sortByCity }: IProps) =>
     </TableBody>
   </Table>
 
-const mapStateToProps = (state: Types.RootState) => ({
-  cityMaps: state.cityMap.cityMaps.payload
-})
-
-const mapDispatchToProps = (dispatch: Dispatch<Types.RootAction>) => bindActionCreators({
-  deleteCity: actions.deleteCity,
-  sortByCity: actions.sortByCity
-}, dispatch)
-
-const ReduxWrapper = connect(mapStateToProps, mapDispatchToProps)
-const StylesWrapper = withStyles(styles)
-const WrappedComponent = ReduxWrapper(StylesWrapper(CitiesTable))
-export default WrappedComponent
+export default CitiesTable

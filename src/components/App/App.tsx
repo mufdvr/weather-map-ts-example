@@ -3,13 +3,13 @@ import * as React from 'react'
 import { Provider } from 'react-redux'
 
 import store from 'store'
-import { containers } from 'features/CityMap'
+import { connected } from 'features/CityMap'
 
 const App:React.SFC = () => {
-  const { WeatherMapRoot } = containers
+  const { LayoutConnected: WeatherMapLayout } = connected
   return (
     <Provider store={store}>
-      <WeatherMapRoot />
+      <WeatherMapLayout />
     </Provider>
   )
 }

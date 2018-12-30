@@ -1,4 +1,4 @@
-import { action, createAsyncAction } from 'typesafe-actions'
+import { createAsyncAction, createStandardAction } from 'typesafe-actions'
 import { ICityMap } from './models'
 
 import * as types from './constants'
@@ -9,6 +9,6 @@ export const addCity = createAsyncAction(
     types.ADD_CITY_FAILURE
   )<string, ICityMap, RequestError>()
 
-export const deleteCity = (index: number) => action(types.DELETE_CITY, index)
+export const deleteCity = createStandardAction(types.DELETE_CITY)<number>()
 
-export const sortByCity = () => action(types.SORT_BY_CITY)
+export const sortByCity = createStandardAction(types.SORT_BY_CITY)<void>()

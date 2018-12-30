@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { ActionType } from 'typesafe-actions'
+import { ActionType, getType } from 'typesafe-actions'
 import * as types from './constants'
 
 import { ICityMap } from './models'
@@ -20,18 +20,18 @@ export type CityMapAction = ActionType<typeof actions>
 export default combineReducers<ICityMapState, CityMapAction>({
   cityMaps: (state = { order: 1, payload: [] }, action) => {
     switch (action.type) {
-      case types.ADD_CITY_SUCCESS:
+      case getType(actions.addCity.success):
         return {
           ...state,
           payload: [...state.payload, action.payload]
         }
-      case types.DELETE_CITY:
+      case getType(actions.deleteCity):
         state.payload.splice(action.payload, 1)
         return {
           ...state,
           payload: [...state.payload]
         }
-      case types.SORT_BY_CITY:
+      case getType(actions.sortByCity):
         return {
           order: state.order * -1,
           payload: [...state.payload.sort((a, b) => {
