@@ -1,7 +1,7 @@
 import { combineEpics } from 'redux-observable'
 
-import cityMap from '../features/CityMap/epics'
+import weatherMap from '../features/WeatherMap/epics'
 
 export default combineEpics(
-  ...cityMap,
+  ...weatherMap,
   )

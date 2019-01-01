@@ -1,8 +1,7 @@
 import * as React from 'react'
 import Paper from '@material-ui/core/Paper'
 
-import AddCityConnected from '../../connected/AddCityConnected'
-import CitiesTableConnected from '../../connected/CitiesTableConnected'
+import { AddCity, CitiesTable } from '../../containers'
 
 export interface IProps {
   fetching: boolean,
@@ -24,8 +23,8 @@ class Layout extends React.Component<IProps> {
     return (
       <div className={classes.root}>
         <Paper className={classes.paper}>
-          <AddCityConnected />
-          <CitiesTableConnected />
+          <AddCity />
+          <CitiesTable />
         </Paper>
       </div>
     )

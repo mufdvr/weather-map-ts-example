@@ -7,17 +7,17 @@ import TableRow from '@material-ui/core/TableRow'
 import IconButton from '@material-ui/core/IconButton'
 import DeleteIcon from '@material-ui/icons/Delete'
 
-import { ICityMap } from '../../models'
+import { ICity } from '../../models'
 import CustomTableCell from './CustomTableCell'
 
 export interface IProps {
-   cityMaps: ICityMap[]
+  weatherMap: ICity[]
    classes: any
    deleteCity: (index: number) => any
    sortByCity: () => any
 }
 
-const CitiesTable = ({ cityMaps, classes, deleteCity, sortByCity }: IProps) =>
+const CitiesTable = ({ weatherMap, classes, deleteCity, sortByCity }: IProps) =>
   <Table className={classes.table}>
     <TableHead>
       <TableRow>
@@ -29,7 +29,7 @@ const CitiesTable = ({ cityMaps, classes, deleteCity, sortByCity }: IProps) =>
     </TableHead>
     <TableBody>
       {
-        cityMaps.map((city, index) => {
+        weatherMap.map((city, index) => {
         return (
           <TableRow className={classes.row} key={index}>
             <CustomTableCell component="th" scope="row">

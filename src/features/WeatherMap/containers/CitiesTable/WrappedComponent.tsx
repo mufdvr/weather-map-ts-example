@@ -5,10 +5,10 @@ import { withStyles } from '@material-ui/core/styles'
 import styles from './styles'
 import * as actions from '../../actions'
 
-import CitiesTable from '../../components/CitiesTable'
+import CitiesTable from './CitiesTable'
 
 const mapStateToProps = (state: Types.RootState) => ({
-  cityMaps: state.cityMap.cityMaps.payload
+  weatherMap: state.weatherMap.weatherMap.payload
 })
 
 const mapDispatchToProps = (dispatch: Dispatch<Types.RootAction>) => bindActionCreators({

@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
 
-import { cityMapReducer } from 'features/CityMap'
+import { weatherMapReducer } from 'features/WeatherMap'
 
 const rootReducer = combineReducers({
-  cityMap: cityMapReducer,
+  weatherMap: weatherMapReducer,
 })
 
 export default rootReducer

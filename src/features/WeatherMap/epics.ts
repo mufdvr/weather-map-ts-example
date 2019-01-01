@@ -6,10 +6,10 @@ import { of } from 'rxjs'
 import { ajax } from 'rxjs/ajax'
 
 import { addCity } from './actions'
-import { CityMapAction } from '../CityMap'
+import { WeatherMapAction } from '../WeatherMap'
 import * as api from './api'
 
-const addCityAction: Epic<CityMapAction, CityMapAction, Types.RootState> = action$ =>
+const addCityAction: Epic<WeatherMapAction, WeatherMapAction, Types.RootState> = action$ =>
   action$.pipe(
     filter(isActionOf(addCity.request)),
     switchMap(action =>

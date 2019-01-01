@@ -1,4 +1,4 @@
-export interface ICityMap {
+export interface ICity {
   name: string
   main: {
     temp: number,

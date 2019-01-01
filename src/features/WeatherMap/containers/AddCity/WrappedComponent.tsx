@@ -5,14 +5,14 @@ import { withStyles } from '@material-ui/core/styles'
 
 import * as actions from '../../actions'
 import styles from './styles'
-import AddCity from '../../components/AddCity'
+import AddCity from './AddCity'
 
 const mapStateToProps = (state: Types.RootState) => {
-  const { fetching, error, cityMaps } = state.cityMap
+  const { fetching, error, weatherMap } = state.weatherMap
   return {
     fetching,
     error,
-    cityMaps: cityMaps.payload
+    weatherMap: weatherMap.payload
   }
 }
 

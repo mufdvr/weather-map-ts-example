@@ -3,10 +3,10 @@ import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import CircularProgress from '@material-ui/core/CircularProgress'
 
-import { ICityMap } from '../../models'
+import { ICity } from '../../models'
 
 export interface IProps {
-   cityMaps: ICityMap[]
+   weatherMap: ICity[]
    fetching: boolean
    classes: IClasses
    error: RequestError
@@ -34,9 +34,9 @@ class AddCity extends React.Component<IProps, IState> {
     this.setState({ [name]: value } as IState )
 
   handleClick = (): void => {
-    const { cityMaps, addCity }: IProps = this.props
+    const { weatherMap, addCity }: IProps = this.props
     const city = this.state.city.toLowerCase()
-    if (cityMaps.find(item => item.name.toLowerCase() === city)) {
+    if (weatherMap.find(item => item.name.toLowerCase() === city)) {
       console.log('City already added')
     } else {
       addCity(city)

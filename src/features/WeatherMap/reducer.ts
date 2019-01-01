@@ -2,23 +2,23 @@ import { combineReducers } from 'redux'
 import { ActionType, getType } from 'typesafe-actions'
 import * as types from './constants'
 
-import { ICityMap } from './models'
+import { ICity } from './models'
 import * as actions from './actions'
 
 
-export interface ICityMapState {
-  readonly cityMaps: {
+export interface IWeatherMapState {
+  readonly weatherMap: {
     order: number
-    payload: ICityMap[]
+    payload: ICity[]
   }
   readonly fetching: boolean
   readonly error: RequestError
 }
 
-export type CityMapAction = ActionType<typeof actions>
+export type WeatherMapAction = ActionType<typeof actions>
 
-export default combineReducers<ICityMapState, CityMapAction>({
-  cityMaps: (state = { order: 1, payload: [] }, action) => {
+export default combineReducers<IWeatherMapState, WeatherMapAction>({
+  weatherMap: (state = { order: 1, payload: [] }, action) => {
     switch (action.type) {
       case getType(actions.addCity.success):
         return {
