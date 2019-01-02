@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button'
 import CircularProgress from '@material-ui/core/CircularProgress'
 
 import { ICity } from '../../models'
+import { Snackbars } from 'components'
 
 export interface IProps {
    weatherMap: ICity[]
@@ -34,10 +35,10 @@ class AddCity extends React.Component<IProps, IState> {
     this.setState({ [name]: value } as IState )
 
   handleClick = (): void => {
-    const { weatherMap, addCity }: IProps = this.props
+    const { weatherMap, addCity } = this.props
     const city = this.state.city.toLowerCase()
     if (weatherMap.find(item => item.name.toLowerCase() === city)) {
-      console.log('City already added')
+      Snackbars.error('City already added')
     } else {
       addCity(city)
     }
@@ -49,7 +50,7 @@ class AddCity extends React.Component<IProps, IState> {
   }
 
   render = () => {
-    const { classes, fetching }: IProps = this.props
+    const { classes, fetching } = this.props
     const { city } = this.state
     return (
       <div className={classes.root}>
@@ -64,7 +65,9 @@ class AddCity extends React.Component<IProps, IState> {
         />
         <Button variant="contained" className={classes.button} onClick={this.handleClick}>
           Add
-          {fetching && <CircularProgress size={24} className={classes.buttonProgress} />}
+          {
+            fetching && <CircularProgress size={24} className={classes.buttonProgress} />
+          }
         </Button>
       </div>
     )

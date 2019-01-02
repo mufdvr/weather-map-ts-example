@@ -1,7 +1,7 @@
 import { createAsyncAction, createStandardAction } from 'typesafe-actions'
 import { ICity } from './models'
 
-import * as types from './constants'
+import * as types from './actionTypes'
 
 export const addCity = createAsyncAction(
     types.ADD_CITY_REQUEST,

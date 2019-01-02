@@ -2,6 +2,7 @@ import * as React from 'react'
 import Paper from '@material-ui/core/Paper'
 
 import { AddCity, CitiesTable } from '../../containers'
+import { Snackbars } from 'components'
 
 export interface IProps {
   fetching: boolean,
@@ -15,7 +16,7 @@ export interface IProps {
 class Layout extends React.Component<IProps> {
 
   componentWillReceiveProps = ({ fetching, error: { message } }: IProps): void => {
-    !fetching && message && console.log(message)
+    !fetching && message && Snackbars.error(message)
   }
 
   render = () => {
