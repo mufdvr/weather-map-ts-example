@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux'
 import { ActionType, getType } from 'typesafe-actions'
-import * as types from './constants'
 
 import { ICity } from './models'
 import * as actions from './actions'
@@ -48,18 +47,8 @@ export default combineReducers<IWeatherMapState, WeatherMapAction>({
         return state
     }
   },
-  fetching: (state = false, action) => {
-    switch (action.type) {
-      case types.ADD_CITY_REQUEST:
-        return true
-      case types.ADD_CITY_SUCCESS:
-      case types.ADD_CITY_FAILURE:
-        return false
-      default:
-        return state    
-    }
-  },
-  error: (state, action) => {
-    return action.type === types.ADD_CITY_FAILURE ? action.payload : { cod: 0, message: '' }
-  }
+  fetching: (state, action) => 
+    action.type === getType(actions.addCity.request) || !(getType(actions.addCity.success) || getType(actions.addCity.failure)),
+  error: (state, action) => 
+    action.type === getType(actions.addCity.failure) ? action.payload : { cod: 0, message: '' }
 })
