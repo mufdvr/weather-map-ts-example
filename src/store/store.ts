@@ -8,7 +8,7 @@ import rootEpic from './root-epic'
 import services from '../services'
 
 const { loadState } = services.localStorage
-const initialState = loadState()
+const initialState = loadState() || {}
 
 export const epicMiddleware = createEpicMiddleware<Types.RootAction, Types.RootAction, Types.RootState>({
   dependencies: services
