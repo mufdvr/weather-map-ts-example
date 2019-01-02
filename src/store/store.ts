@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware } from 'redux'
 import { createEpicMiddleware } from 'redux-observable'
+import { ajax } from 'rxjs/ajax'
 
 import Types from 'Types'
 import { composeEnhancers } from './utils'
@@ -8,7 +9,9 @@ import rootEpic from './root-epic'
 
 const initialState = {}
 
-export const epicMiddleware = createEpicMiddleware<Types.RootAction, Types.RootAction, Types.RootState>()
+export const epicMiddleware = createEpicMiddleware<Types.RootAction, Types.RootAction, Types.RootState>({
+  dependencies: { getJSON: ajax.getJSON }
+})
 
 function configureStore(initState?: object) {
   const middlewares = [epicMiddleware]

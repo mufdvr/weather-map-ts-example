@@ -47,8 +47,8 @@ export default combineReducers<IWeatherMapState, WeatherMapAction>({
         return state
     }
   },
-  fetching: (state, action) => 
-    action.type === getType(actions.addCity.request) || !(getType(actions.addCity.success) || getType(actions.addCity.failure)),
+  fetching: (state = false, action) => 
+    action.type === getType(actions.addCity.request) || state && !(getType(actions.addCity.success) || getType(actions.addCity.failure)),
   error: (state, action) => 
     action.type === getType(actions.addCity.failure) ? action.payload : { cod: 0, message: '' }
 })
