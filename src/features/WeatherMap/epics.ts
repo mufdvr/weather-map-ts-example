@@ -8,9 +8,10 @@ import { addCity } from './actions'
 import { WeatherMapAction } from '../WeatherMap'
 import * as api from './api'
 
-const addCityAction: Epic<WeatherMapAction, WeatherMapAction, Types.RootState> = (action$, state$, { getJSON }) =>
+const addCityAction: Epic<WeatherMapAction, WeatherMapAction, Types.RootState, Types.Services> = (action$, state$, { getJSON }) =>
   action$.pipe(
     filter(isActionOf(addCity.request)),
+    // tap(() => console.log(state$)),
     switchMap(action =>
       getJSON(api.weatherMap(action.payload)).pipe(
         map(addCity.success),
