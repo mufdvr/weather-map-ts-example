@@ -7,11 +7,11 @@ import SnackbarContentWrapper from './SnackbarContentWrapper'
 export interface IProps {
   variant: 'success' | 'warning' | 'error' | 'info'
   message: string
-  autoHideDuration: number
+  autoHideDuration?: number
 }
 
 export interface IState { 
-  open: boolean
+  readonly open: boolean
 }
 
 class Snackbars extends React.Component<IProps, IState> {

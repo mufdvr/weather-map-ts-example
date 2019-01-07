@@ -27,12 +27,13 @@ interface IClasses {
 }
 
 class AddCity extends React.Component<IProps, IState> {
-  state = {
+
+  readonly state: IState = {
     city: ''
   }
 
   handleChange = ({ target: { name, value } }: React.ChangeEvent<HTMLInputElement>): void => 
-    this.setState({ [name]: value } as IState )
+    this.setState({ [name]: value })
 
   handleClick = (): void => {
     const { weatherMap, addCity } = this.props
